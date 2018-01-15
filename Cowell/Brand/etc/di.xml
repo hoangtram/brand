@@ -9,7 +9,7 @@ and open the template in the editor.
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="brand_listing_data_source" xsi:type="string">Cowell\Brand\Model\ResourceModel\Brands\Grid\Collection</item>
+                <item name="cowell_brand_index_index_data_source" xsi:type="string">Cowell\Brand\Model\ResourceModel\Brands\Grid\Collection</item>
             </argument>
         </arguments>
     </type>

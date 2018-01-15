@@ -7,8 +7,8 @@ and open the template in the editor.
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">brand_listing.brand_listing_data_source</item>
-            <item name="deps" xsi:type="string">brand_listing.brand_listing_data_source</item>
+            <item name="provider" xsi:type="string">cowell_brand_index_index.cowell_brand_index_index_data_source</item>
+            <item name="deps" xsi:type="string">cowell_brand_index_index.cowell_brand_index_index_data_source</item>
         </item>
         <item name="buttons" xsi:type="array">
             <item name="add" xsi:type="array">
@@ -19,10 +19,10 @@ and open the template in the editor.
             </item>
         </item>
     </argument>
-    <dataSource name="brand_listing_data_source">
+    <dataSource name="cowell_brand_index_index_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
-            <argument name="name" xsi:type="string">brand_listing_data_source</argument>
+            <argument name="name" xsi:type="string">cowell_brand_index_index_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">brand_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
@@ -72,7 +72,7 @@ and open the template in the editor.
                         <item name="type" xsi:type="string">edit</item>
                         <item name="label" xsi:type="string" translate="true">Edit</item>
                         <item name="callback" xsi:type="array">
-                            <item name="provider" xsi:type="string">brand_listing.brand_listing.brand_columns_editor</item>
+                            <item name="provider" xsi:type="string">cowell_brand_index_index.cowell_brand_index_index.brand_columns_editor</item>
                             <item name="target" xsi:type="string">editSelected</item>
                         </item>
                     </item>
@@ -85,7 +85,7 @@ and open the template in the editor.
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="editorConfig" xsi:type="array">
-                    <item name="selectProvider" xsi:type="string">brand_listing.brand_listing.brand_columns.ids</item>
+                    <item name="selectProvider" xsi:type="string">cowell_brand_index_index.cowell_brand_index_index.brand_columns.ids</item>
                     <item name="enabled" xsi:type="boolean">true</item>
                     <item name="indexField" xsi:type="string">brand_id</item>
                     <item name="clientConfig" xsi:type="array">
@@ -95,7 +95,7 @@ and open the template in the editor.
                 </item>
                 <item name="childDefaults" xsi:type="array">
                     <item name="fieldAction" xsi:type="array">
-                        <item name="provider" xsi:type="string">brand_listing.brand_listing.brand_columns_editor</item>
+                        <item name="provider" xsi:type="string">cowell_brand_index_index.cowell_brand_index_index.brand_columns_editor</item>
                         <item name="target" xsi:type="string">startEdit</item>
                         <item name="params" xsi:type="array">
                             <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>

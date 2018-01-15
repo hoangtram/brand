@@ -6,10 +6,10 @@ and open the template in the editor.
 -->
 
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
-    <update handle="formkey"/>
+    <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="brand_listing"/>
+            <uiComponent name="cowell_brand_index_index"/>
         </referenceContainer>
     </body>
 </page>
