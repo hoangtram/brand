@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="brand_listing_data_source" xsi:type="string">Cowell\Brand\Model\ResourceModel\Brands\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Cowell\Brand\Model\ResourceModel\Brands\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">brand</argument>
+            <argument name="resourceModel" xsi:type="string">Cowell\Brand\Model\ResourceModel\Brands</argument>
+        </arguments>
+    </virtualType>
+</config>

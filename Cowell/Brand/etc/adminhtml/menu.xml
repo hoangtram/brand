@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Cowell_Brand::brand" title="マスタ管理" module="Cowell_Brand" sortOrder="51" resource="Cowell_Brand::brand"/>
+        <add id="Cowell_Brand::brands" title="Brands" module="Cowell_Brand" sortOrder="10" action="cowell_brand/index/index" resource="Cowell_Brand::brand" parent="Cowell_Brand::brand"/>
+    </menu>
+</config>
