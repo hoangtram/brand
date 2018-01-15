@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Cowell\Brand\Api\BrandRepositoryInterface" type="Cowell\Brand\Model\BrandRepository"/>
+	<preference for="Cowell\Brand\Api\Data\BrandInterface" type="Cowell\Brand\Model\Brand"/>
+	<preference for="Cowell\Brand\Api\Data\BrandSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Cowell\Brand\Model\ResourceModel\Brand\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">cowell_brand_brand</argument>
+			<argument name="resourceModel" xsi:type="string">Cowell\Brand\Model\ResourceModel\Brand\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="cowell_brand_brand_grid_data_source" xsi:type="string">Cowell\Brand\Model\ResourceModel\Brand\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>
