@@ -47,36 +47,22 @@
         <exportButton name="export_button"/>
         <filterSearch name="fulltext"/>
         <filters name="listing_filters"/>
-        <massaction name="listing_massaction">
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
                 </item>
             </argument>
             <action name="delete">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">delete</item>
-                        <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="cowell_brand/index/massDelete"/>
-                        <item name="confirm" xsi:type="array">
-                            <item name="title" xsi:type="string" translate="true">Delete Brand</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected brands?</item>
-                        </item>
-                    </item>
-                </argument>
-            </action>
-            <action name="edit">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">edit</item>
-                        <item name="label" xsi:type="string" translate="true">Edit</item>
-                        <item name="callback" xsi:type="array">
-                            <item name="provider" xsi:type="string">cowell_brand_index_index.cowell_brand_index_index.brand_columns_editor</item>
-                            <item name="target" xsi:type="string">editSelected</item>
-                        </item>
-                    </item>
-                </argument>
+                <settings>
+                    <confirm>
+                        <message translate="true">Delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="cowell_brand/index/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
             </action>
         </massaction>
         <paging name="listing_paging"/>
@@ -89,7 +75,7 @@
                     <item name="enabled" xsi:type="boolean">true</item>
                     <item name="indexField" xsi:type="string">brand_id</item>
                     <item name="clientConfig" xsi:type="array">
-                        <item name="saveUrl" path="cowell_brand/Brand/inlineEdit" xsi:type="url"/>
+                        <item name="saveUrl" path="cowell_brand/index/edit" xsi:type="url"/>
                         <item name="validateBeforeSave" xsi:type="boolean">false</item>
                     </item>
                 </item>

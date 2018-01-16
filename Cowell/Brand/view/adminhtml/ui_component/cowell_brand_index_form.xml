@@ -19,9 +19,7 @@ and open the template in the editor.
         <item name="template" xsi:type="string">templates/form/collapsible</item>
         <item name="buttons" xsi:type="array">
             <item name="back" xsi:type="string">Cowell\Brand\Block\Adminhtml\Brand\Edit\BackButton</item>
-            <item name="delete" xsi:type="string">Cowell\Brand\Block\Adminhtml\Brand\Edit\DeleteButton</item>
             <item name="save" xsi:type="string">Cowell\Brand\Block\Adminhtml\Brand\Edit\SaveButton</item>
-            <item name="save_and_continue" xsi:type="string">Cowell\Brand\Block\Adminhtml\Brand\Edit\SaveAndContinueButton</item>
         </item>
     </argument>
     <dataSource name="cowell_brand_index_index_data_source">
@@ -87,24 +85,6 @@ and open the template in the editor.
                 </item>
             </argument>
         </field>
-        <field name="watermark_image_image" formElement="fileUploader">
-            <settings>
-                <notice translate="true">Allowed file types: jpeg, gif, png.</notice>
-                <label translate="true">Image</label>
-                <componentType>fileUploader</componentType>
-            </settings>
-            <formElements>
-                <fileUploader>
-                    <settings>
-                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
-                        <maxFileSize>2097152</maxFileSize>
-                        <uploaderConfig>
-                            <param xsi:type="string" name="url">theme/design_config_fileUploader/save</param>
-                        </uploaderConfig>
-                    </settings>
-                </fileUploader>
-            </formElements>
-        </field>
         <field name="src" formElement="fileUploader">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -131,33 +111,16 @@ and open the template in the editor.
                 </fileUploader>
             </formElements>
         </field>
-        <!--        <field name="src">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" translate="true" xsi:type="string">画像</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">Brand</item>
-                    <item name="sortOrder" xsi:type="number">60</item>
-                    <item name="dataScope" xsi:type="string">src</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">false</item>
-                    </item>
-                </item>
-            </argument>
-        </field>-->
         <field name="brand_inf_dt">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" translate="true" xsi:type="string">brand_inf_dt</item>
-                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="label" translate="true" xsi:type="string">SOA取込日</item>
                     <item name="source" xsi:type="string">Brand</item>
-                    <item name="sortOrder" xsi:type="number">70</item>
                     <item name="dataScope" xsi:type="string">brand_inf_dt</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">false</item>
-                    </item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="value" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item>
                 </item>
             </argument>
         </field>
@@ -165,60 +128,13 @@ and open the template in the editor.
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" translate="true" xsi:type="string">soa_dt</item>
-                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="label" translate="true" xsi:type="string">SOA出力日</item>
                     <item name="source" xsi:type="string">Brand</item>
                     <item name="sortOrder" xsi:type="number">80</item>
                     <item name="dataScope" xsi:type="string">soa_dt</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">false</item>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        
-        <field name="created_at">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" translate="true" xsi:type="string">created_at</item>
-                    <item name="formElement" xsi:type="string">date</item>
-                    <item name="source" xsi:type="string">Brand</item>
-                    <item name="sortOrder" xsi:type="number">100</item>
-                    <item name="dataScope" xsi:type="string">created_at</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">false</item>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        <field name="update_at">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" translate="true" xsi:type="string">update_at</item>
-                    <item name="formElement" xsi:type="string">date</item>
-                    <item name="source" xsi:type="string">Brand</item>
-                    <item name="sortOrder" xsi:type="number">110</item>
-                    <item name="dataScope" xsi:type="string">update_at</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">false</item>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        <field name="upuser_id">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" translate="true" xsi:type="string">upuser_id</item>
+                    <item name="value" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">Brand</item>
-                    <item name="sortOrder" xsi:type="number">120</item>
-                    <item name="dataScope" xsi:type="string">upuser_id</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">false</item>
-                    </item>
                 </item>
             </argument>
         </field>
