@@ -30,12 +30,7 @@ class Edit extends \Magento\Backend\App\Action
         $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context, $coreRegistry);
     }
-
-    /**
-     * Edit action
-     *
-     * @return \Magento\Framework\Controller\ResultInterface
-     */
+    
     public function execute()
     {
         // 1. Get ID and create model
@@ -52,21 +47,16 @@ class Edit extends \Magento\Backend\App\Action
                 return $resultRedirect->setPath('*/*/');
             }
         }
-//        $this->_coreRegistry->register('cowell_brand_index', $model);
         
         // 5. Build edit form
-        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu(self::ADMIN_RESOURCE)
-            ->addBreadcrumb(__('Cowell'), __('Cowell'))
-            ->addBreadcrumb(__('Brand'), __('Brand'));
         
         $resultPage->addBreadcrumb(
             $id ? __('Edit Brand') : __('New Brand'),
             $id ? __('Edit Brand') : __('New Brand')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Brands'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? $model->getTitle() : __('New Brand'));
+        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? $model->getName() : __('New Brand'));
         return $resultPage;
     }
 }

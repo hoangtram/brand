@@ -12,7 +12,6 @@ and open the template in the editor.
     </head>
     <body>
         <referenceContainer name="content">
-            <referenceBlock name="storeSwitcherBlock" />
             <uiComponent name="cowell_brand_index_form"/>
         </referenceContainer>
     </body>

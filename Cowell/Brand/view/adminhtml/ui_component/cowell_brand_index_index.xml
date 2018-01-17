@@ -24,7 +24,7 @@
             <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
             <argument name="name" xsi:type="string">cowell_brand_index_index_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">brand_id</argument>
-            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">brand_id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
@@ -81,11 +81,11 @@
                 </item>
                 <item name="childDefaults" xsi:type="array">
                     <item name="fieldAction" xsi:type="array">
-                        <item name="provider" xsi:type="string">cowell_brand_index_index.cowell_brand_index_index.cowell_brand_brand_columns_editor</item>
-                        <item name="target" xsi:type="string">startEdit</item>
+                        <item name="provider" xsi:type="string">cowell_brand_index_index.cowell_brand_index_index.cowell_brand_brand_columns.actions</item>
+                        <item name="target" xsi:type="string">applyAction</item>
                         <item name="params" xsi:type="array">
-                            <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
-                            <item name="1" xsi:type="boolean">true</item>
+                            <item name="0" xsi:type="string">edit</item>
+                            <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
                         </item>
                     </item>
                 </item>
@@ -123,7 +123,7 @@
                 </item>
             </argument>
         </column>
-<!--        <column name="brand">
+        <!--        <column name="brand">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editor" xsi:type="array">
@@ -168,7 +168,7 @@
                 </item>
             </argument>
         </column>
-<!--        <column name="src">
+        <!--        <column name="src">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editor" xsi:type="array">
@@ -202,7 +202,7 @@
                 </item>
             </argument>
         </column>
-<!--        <column name="delete_flg">
+        <!--        <column name="delete_flg">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editor" xsi:type="array">
@@ -237,7 +237,7 @@
                 </item>
             </argument>
         </column>
-<!--        <column name="upuser_id">
+        <!--        <column name="upuser_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editor" xsi:type="array">
@@ -249,5 +249,10 @@
                 </item>
             </argument>
         </column>-->
+        <actionsColumn name="actions" class="Cowell\Brand\Ui\Component\Listing\BrandActions">
+            <settings>
+                <indexField>brand_id</indexField>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>

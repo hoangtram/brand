@@ -8,10 +8,10 @@ and open the template in the editor.
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">cowell_brand_index_form.cowell_brand_index_index_data_source</item>
-            <item name="deps" xsi:type="string">cowell_brand_index_form.cowell_brand_index_index_data_source</item>
+            <item name="provider" xsi:type="string">cowell_brand_index_form.cowell_brand_index_form_data_source</item>
+            <item name="deps" xsi:type="string">cowell_brand_index_form.cowell_brand_index_form_data_source</item>
         </item>
-        <item name="label" translate="true" xsi:type="string">General Information</item>
+        <item name="label" translate="true" xsi:type="string">Brand Information</item>
         <item name="config" xsi:type="array">
             <item name="dataScope" xsi:type="string">data</item>
             <item name="namespace" xsi:type="string">cowell_brand_index_form</item>
@@ -22,10 +22,10 @@ and open the template in the editor.
             <item name="save" xsi:type="string">Cowell\Brand\Block\Adminhtml\Brand\Edit\SaveButton</item>
         </item>
     </argument>
-    <dataSource name="cowell_brand_index_index_data_source">
+    <dataSource name="cowell_brand_index_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
-            <argument name="name" xsi:type="string">cowell_brand_index_index_data_source</argument>
+            <argument name="class" xsi:type="string">Cowell\Brand\Model\Brands\DataProvider</argument>
+            <argument name="name" xsi:type="string">cowell_brand_index_form_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">brand_id</argument>
             <argument name="requestFieldName" xsi:type="string">brand_id</argument>
             <argument name="data" xsi:type="array">
@@ -40,7 +40,7 @@ and open the template in the editor.
             </item>
         </argument>
     </dataSource>
-    <fieldset name="General">
+    <fieldset name="brand">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="label" xsi:type="string"/>
@@ -49,14 +49,14 @@ and open the template in the editor.
         <field name="delete_flg" formElement="checkbox">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Brand</item>
-                    <item name="default" xsi:type="number">1</item>
+                    <item name="source" xsi:type="string">brand</item>
+                    <item name="default" xsi:type="number">0</item>
                 </item>
             </argument>
             <settings>
                 <dataType>boolean</dataType>
                 <label translate="true">状態</label>
-                <dataScope>is_active</dataScope>
+                <dataScope>delete_flg</dataScope>
             </settings>
             <formElements>
                 <checkbox>
@@ -76,8 +76,7 @@ and open the template in the editor.
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" translate="true" xsi:type="string">ブランド名</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">Brand</item>
-                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="source" xsi:type="string">brand</item>
                     <item name="dataScope" xsi:type="string">name</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">false</item>
@@ -88,7 +87,8 @@ and open the template in the editor.
         <field name="src" formElement="fileUploader">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Brand</item>
+                    <item name="source" xsi:type="string">brand</item>
+                    <!--<item name="dataScope" xsi:type="string">src</item>-->
                 </item>
             </argument>
             <settings>
@@ -104,7 +104,7 @@ and open the template in the editor.
                         <allowedExtensions>jpg jpeg gif png</allowedExtensions>
                         <maxFileSize>2097152</maxFileSize>
                         <uploaderConfig>
-                            <param xsi:type="url" name="url" path="catalog/category_image/upload"/>
+                            <param xsi:type="url" name="url" path="brand/images/upload"/>
                         </uploaderConfig>
                         <previewTmpl>Magento_Catalog/image-preview</previewTmpl>
                     </settings>
@@ -116,11 +116,9 @@ and open the template in the editor.
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" translate="true" xsi:type="string">SOA取込日</item>
-                    <item name="source" xsi:type="string">Brand</item>
-                    <item name="dataScope" xsi:type="string">brand_inf_dt</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="value" xsi:type="string">text</item>
-                    <item name="readonly" xsi:type="boolean">true</item>
+                    <item name="source" xsi:type="string">brand</item>
+                    <item name="dataScope" xsi:type="string">brand_inf_dt</item>
                 </item>
             </argument>
         </field>
@@ -129,12 +127,9 @@ and open the template in the editor.
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" translate="true" xsi:type="string">SOA出力日</item>
-                    <item name="source" xsi:type="string">Brand</item>
-                    <item name="sortOrder" xsi:type="number">80</item>
-                    <item name="dataScope" xsi:type="string">soa_dt</item>
-                    <item name="value" xsi:type="string">text</item>
-                    <item name="readonly" xsi:type="boolean">true</item>
                     <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">brand</item>
+                    <item name="dataScope" xsi:type="string">soa_dt</item>
                 </item>
             </argument>
         </field>

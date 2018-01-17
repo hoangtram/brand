@@ -5,27 +5,45 @@ namespace Cowell\Brand\Block\Adminhtml\Brand\Edit;
 
 use Magento\Backend\Block\Widget\Context;
 
-abstract class GenericButton
+class GenericButton
 {
-
-    protected $context;
+/**
+     * Url Builder
+     *
+     * @var \Magento\Framework\UrlInterface
+     */
+    protected $urlBuilder;
 
     /**
-     * @param \Magento\Backend\Block\Widget\Context $context
+     * Registry
+     *
+     * @var \Magento\Framework\Registry
      */
-    public function __construct(Context $context)
-    {
-        $this->context = $context;
+    protected $registry;
+
+    /**
+     * Constructor
+     *
+     * @param \Magento\Backend\Block\Widget\Context $context
+     * @param \Magento\Framework\Registry $registry
+     */
+    public function __construct(
+        \Magento\Backend\Block\Widget\Context $context,
+        \Magento\Framework\Registry $registry
+    ) {
+        $this->urlBuilder = $context->getUrlBuilder();
+        $this->registry = $registry;
     }
 
     /**
-     * Return model ID
+     * Return the synonyms group Id.
      *
      * @return int|null
      */
-    public function getModelId()
+    public function getId()
     {
-        return $this->context->getRequest()->getParam('brand_id');
+        $brand = $this->registry->registry('brand');
+        return $brand ? $brand->getId() : null;
     }
 
     /**
@@ -37,6 +55,6 @@ abstract class GenericButton
      */
     public function getUrl($route = '', $params = [])
     {
-        return $this->context->getUrlBuilder()->getUrl($route, $params);
+        return $this->urlBuilder->getUrl($route, $params);
     }
 }
