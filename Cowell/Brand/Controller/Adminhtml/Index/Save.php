@@ -15,12 +15,15 @@ namespace Cowell\Brand\Controller\Adminhtml\Index;
  */
 class Save extends \Magento\Backend\App\Action{
     protected $dataPersistor;
+    protected $uploaderPool;
     
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
+        \Cowell\Brand\Model\UploaderPool $uploaderPool,
         \Magento\Framework\App\Request\DataPersistorInterface $dataPersistor
     ) {
         $this->dataPersistor = $dataPersistor;
+        $this->uploaderPool = $uploaderPool;
         parent::__construct($context);
     }
     
@@ -37,9 +40,10 @@ class Save extends \Magento\Backend\App\Action{
                 $this->messageManager->addErrorMessage(__('This Brand no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
-        
+            $image = $this->getUploader('image')->uploadFileAndGetName('src', $data);
+            $data['src'] = $image;
             $model->setData($data);
-        
+            
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Brand.'));
@@ -59,5 +63,10 @@ class Save extends \Magento\Backend\App\Action{
             return $resultRedirect->setPath('*/*/edit', ['brand_id' => $this->getRequest()->getParam('brand_id')]);
         }
         return $resultRedirect->setPath('*/*/');
+    }
+    
+    protected function getUploader($type)
+    {
+        return $this->uploaderPool->getUploader($type);
     }
 }

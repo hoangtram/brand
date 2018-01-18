@@ -85,25 +85,6 @@ and open the template in the editor.
                 </item>
             </argument>
         </field>
-<!--        <field name="src">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">string</item>
-                    <item name="source" xsi:type="string">brand</item>
-                    <item name="label" xsi:type="string" translate="true">画像</item>
-                    <item name="visible" xsi:type="boolean">true</item>
-                    <item name="formElement" xsi:type="string">fileUploader</item>
-                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
-                    <item name="previewTmpl" xsi:type="string">Cowell_Brand/image-preview</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                    <item name="uploaderConfig" xsi:type="array">
-                        <item name="url" xsi:type="url" path="cowell_brand/image/upload"/>
-                    </item>
-                </item>
-            </argument>
-        </field>-->
         <field name="src">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -116,25 +97,6 @@ and open the template in the editor.
                     <item name="previewTmpl" xsi:type="string">Cowell_Brand/image-preview</item>
                     <item name="uploaderConfig" xsi:type="array">
                         <item name="url" xsi:type="url" path="cowell_brand/index/upload/field/src"/>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        <field name="image">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">string</item>
-                    <item name="source" xsi:type="string">brand</item>
-                    <item name="label" xsi:type="string" translate="true">画像</item>
-                    <item name="visible" xsi:type="boolean">true</item>
-                    <item name="formElement" xsi:type="string">fileUploader</item>
-                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
-                    <item name="previewTmpl" xsi:type="string">Turiknox_SampleImageUploader/image-preview</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                    <item name="uploaderConfig" xsi:type="array">
-                        <item name="url" xsi:type="url" path="sampleimageuploader/image/upload/field/image"/>
                     </item>
                 </item>
             </argument>

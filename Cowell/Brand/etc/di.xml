@@ -19,4 +19,28 @@ and open the template in the editor.
             <argument name="resourceModel" xsi:type="string">Cowell\Brand\Model\ResourceModel\Brands</argument>
         </arguments>
     </virtualType>
+    <virtualType name="BrandImage" type="Cowell\Brand\Model\Uploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="const">Cowell\Brand\Model\Uploader::IMAGE_TMP_PATH</argument>
+            <argument name="basePath" xsi:type="const">Cowell\Brand\Model\Uploader::IMAGE_PATH</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Cowell\Brand\Controller\Adminhtml\Index\Upload">
+        <arguments>
+            <argument name="uploader" xsi:type="object">BrandImage</argument>
+        </arguments>
+    </type>
+    <type name="Cowell\Brand\Model\UploaderPool">
+        <arguments>
+            <argument name="uploaders" xsi:type="array">
+                <item name="image" xsi:type="string">BrandImage</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

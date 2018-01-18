@@ -7,6 +7,8 @@
  */
 namespace Cowell\Brand\Model\Brands;
 
+use Magento\Ui\DataProvider\Modifier\ModifierInterface;
+use Magento\Ui\DataProvider\Modifier\PoolInterface;
 use Cowell\Brand\Model\ResourceModel\Brands\CollectionFactory;
 /**
  * Description of DataProvider
@@ -15,35 +17,76 @@ use Cowell\Brand\Model\ResourceModel\Brands\CollectionFactory;
  */
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
+    /**
+     * @var PoolInterface
+     */
+    protected $pool;
+
     public function __construct(
         $name,
         $primaryFieldName,
         $requestFieldName,
-        CollectionFactory $brandCollectionFactory,
+        CollectionFactory $collectionFactory,
+        PoolInterface $pool,
         array $meta = [],
         array $data = []
     ) {
-        $this->collection = $brandCollectionFactory->create();
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
+        $this->collection = $collectionFactory->create();
+        $this->pool = $pool;
     }
 
+    
     public function getData()
     {
-        if (isset($this->loadedData)) {
-            return $this->loadedData;
+        /** @var ModifierInterface $modifier */
+        foreach ($this->pool->getModifiersInstances() as $modifier) {
+            $this->data = $modifier->modifyData($this->data);
         }
 
-        $items = $this->collection->getItems();
-        $this->loadedData = array();
-        /** @var Customer $customer */
-        foreach ($items as $brand) {
-            
-            $this->loadedData[$brand->getBrandId()] = $brand->getData();
-        }
-
-
-        return $this->loadedData;
-
+        return $this->data;
     }
+    public function getMeta()
+    {
+        $meta = parent::getMeta();
+
+        /** @var ModifierInterface $modifier */
+        foreach ($this->pool->getModifiersInstances() as $modifier) {
+            $meta = $modifier->modifyMeta($meta);
+        }
+
+        return $meta;
+    }
+    
+//    public function __construct(
+//        $name,
+//        $primaryFieldName,
+//        $requestFieldName,
+//        CollectionFactory $brandCollectionFactory,
+//        array $meta = [],
+//        array $data = []
+//    ) {
+//        $this->collection = $brandCollectionFactory->create();
+//        parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
+//    }
+//
+//    public function getData()
+//    {
+//        if (isset($this->loadedData)) {
+//            return $this->loadedData;
+//        }
+//
+//        $items = $this->collection->getItems();
+//        $this->loadedData = array();
+//        /** @var Customer $customer */
+//        foreach ($items as $brand) {
+//            
+//            $this->loadedData[$brand->getBrandId()] = $brand->getData();
+//        }
+//
+//
+//        return $this->loadedData;
+//
+//    }
 }
 
