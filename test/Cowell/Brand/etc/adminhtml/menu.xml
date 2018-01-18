@@ -1,7 +1,0 @@
-<?xml version="1.0" ?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-	<menu>
-		<add id="Cowell::top_level" module="Cowell_Brand" resource="Magento_Backend::content" sortOrder="9999" title="Cowell"/>
-		<add action="cowell_brand/brand/index" id="Cowell::cowell_brand_brand" module="Cowell_Brand" parent="Cowell::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Brand"/>
-	</menu>
-</config>
